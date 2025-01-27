@@ -28,9 +28,9 @@ RUN dnf upgrade -y && \
 RUN echo "user_allow_other" >> /etc/fuse.conf
 
 # Copy the entrypoint script into the container
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY entrypoint.sh ./entrypoint.sh
 
 # Make sure it's executable
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x ./entrypoint.sh
 
 # No ENTRYPOINT or CMD, let docker-compose handle the command
