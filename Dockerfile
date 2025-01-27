@@ -28,12 +28,6 @@ RUN dnf upgrade -y && \
 # Allow FUSE for all users
 RUN echo "user_allow_other" >> /etc/fuse.conf
 
-# Create a mountpoint directory
-RUN mkdir -p /mountpoint
-
-# Copy the entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
 # Set the entrypoint to the script
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT [ "sh", "-c", "mkdir -p /mountpoint/$AWS_BUCKET && mount-s3 -f $AWS_BUCKET /mountpoint/$AWS_BUCKET" ]
+
