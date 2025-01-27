@@ -1,0 +1,13 @@
+services:
+  docker-s3-mount:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    volumes:
+      - /path/to/mount:/mountpoint:shared
+    command: ["amzn-s3-demo-bucket", "/mountpoint/bucket"]
+    restart: unless-stopped
