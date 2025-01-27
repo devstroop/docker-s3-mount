@@ -14,8 +14,8 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}  # Secret key for your S3-compatible service
       - AWS_ENDPOINT_URL=${AWS_ENDPOINT_URL}  # Endpoint URL for your S3-compatible service
       - AWS_REGION=${AWS_REGION}  # Region (if required by your S3-compatible service)
-      # - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
+      - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
     # command: ["mount-s3", "--help"]  # Mount command
     # command: ["mount-s3", "${AWS_BUCKET}", "${LOCAL_PATH}"]  # Mount command
-    command: ["devstroop-youtrack", "/mountpoint"]
+    # command: ["devstroop-youtrack", "/mountpoint"]
     restart: unless-stopped
