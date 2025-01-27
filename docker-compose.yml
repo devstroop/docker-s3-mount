@@ -15,6 +15,6 @@ services:
       - AWS_ENDPOINT_URL=${AWS_ENDPOINT_URL}  # Endpoint URL for your S3-compatible service
       - AWS_REGION=${AWS_REGION}  # Region (if required by your S3-compatible service)
       # - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
-    command: ["mount-s3", "--version"]  # Mount command
+    command: ["mount-s3", "${AWS_BUCKET}", "${LOCAL_PATH}"]  # Mount command
     # command: ["mount-s3", "${AWS_BUCKET}", "${LOCAL_PATH}", "--allow-other"]  # Mount command
     restart: unless-stopped
