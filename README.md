@@ -1,0 +1,10 @@
+# Docker S3 Mount
+
+```
+AWS_ENDPOINT_URL=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
+AWS_BUCKET=
+LOCAL_PATH=/home/ubuntu/your-path
+```
