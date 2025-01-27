@@ -1,13 +1,21 @@
+version: '3.8'
+
 services:
   docker-s3-mount:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: .  # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile  # Use Dockerfile.source for building from source
     cap_add:
       - SYS_ADMIN
     devices:
       - "/dev/fuse:/dev/fuse"
     volumes:
-      - /path/to/mount:/mountpoint:shared
-    command: ["amzn-s3-demo-bucket", "/mountpoint/bucket"]
+      - /path/to/mount:/mountpoint:shared  # Replace /path/to/mount with your host directory
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}  # Access key for your S3-compatible service
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}  # Secret key for your S3-compatible service
+      - AWS_ENDPOINT_URL=${AWS_ENDPOINT_URL}  # Endpoint URL for your S3-compatible service
+      - AWS_REGION=${AWS_REGION}  # Region (if required by your S3-compatible service)
+      - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
+    command: ["mount-s3", "${AWS_BUCKET}", "/mountpoint/${AWS_BUCKET}"]  # Mount command
     restart: unless-stopped
