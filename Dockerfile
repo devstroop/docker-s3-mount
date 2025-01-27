@@ -27,5 +27,7 @@ RUN dnf upgrade -y && \
 
 RUN echo "user_allow_other" >> /etc/fuse.conf
 
+RUN chmod +x ./entrypoint.sh
+
 # Run in foreground mode so that the container can be detached without exiting Mountpoint
 ENTRYPOINT [ "./entrypoint.sh" ]
