@@ -18,8 +18,7 @@ services:
       - AWS_REGION=${AWS_REGION}  # Region (if required by your S3-compatible service)
       - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
     command: >
-      sh -c "
-        mkdir -p /mountpoint/${AWS_BUCKET} &&
-        mount-s3 -f ${AWS_BUCKET} /mountpoint/${AWS_BUCKET} --allow-other
-      "
+      mkdir -p /mountpoint/${AWS_BUCKET} &&
+      mount-s3 ${AWS_BUCKET} /mountpoint/${AWS_BUCKET} --allow-other
+
     restart: unless-stopped
