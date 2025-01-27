@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   docker-s3-mount:
     build:
@@ -15,5 +17,9 @@ services:
       - AWS_ENDPOINT_URL=${AWS_ENDPOINT_URL}  # Endpoint URL for your S3-compatible service
       - AWS_REGION=${AWS_REGION}  # Region (if required by your S3-compatible service)
       - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
-    command: ${AWS_BUCKET} /mountpoint/${AWS_BUCKET} --allow-other
+    command: >
+      sh -c "
+        mkdir -p /mountpoint/${AWS_BUCKET} &&
+        mount-s3 -f ${AWS_BUCKET} /mountpoint/${AWS_BUCKET} --allow-other
+      "
     restart: unless-stopped
