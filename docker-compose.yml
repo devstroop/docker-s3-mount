@@ -18,5 +18,6 @@ services:
     # command: ["mount-s3", "--help"]  # Mount command
     # command: ["mount-s3", "${AWS_BUCKET}", "${LOCAL_PATH}"]  # Mount command
     command: >
-      mount-s3 devstroop-youtrack /mountpoint/bucket
+      mkdir /mountpoint/devstroop-youtrack &&
+      mount-s3 devstroop-youtrack /mountpoint/devstroop-youtrack
     restart: unless-stopped
