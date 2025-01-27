@@ -29,5 +29,5 @@ RUN dnf upgrade -y && \
 RUN echo "user_allow_other" >> /etc/fuse.conf
 
 # Set the entrypoint to the script
-ENTRYPOINT [ "sh", "-c" ]
+ENTRYPOINT [ "mount-s3", "-f" ]
 
