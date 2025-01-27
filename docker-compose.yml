@@ -17,5 +17,5 @@ services:
       # - AWS_BUCKET=${AWS_BUCKET}  # Bucket name to mount
     # command: ["mount-s3", "--help"]  # Mount command
     # command: ["mount-s3", "${AWS_BUCKET}", "${LOCAL_PATH}"]  # Mount command
-    command: ["devstroop-youtrack", "/mountpoint/devstroop-youtrack"]
+    command: ["devstroop-youtrack", "/mountpoint"]
     restart: unless-stopped
