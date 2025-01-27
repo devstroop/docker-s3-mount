@@ -27,9 +27,7 @@ RUN dnf upgrade -y && \
 
 RUN echo "user_allow_other" >> /etc/fuse.conf
 
-# Copy the entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN mkdir /mountpoint/$AWS_BUCKET
 
 # Run in foreground mode so that the container can be detached without exiting Mountpoint
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "mount-s3", "-f", "${AWS_BUCKET}", "/mountpoint/${AWS_BUCKET}" ]
