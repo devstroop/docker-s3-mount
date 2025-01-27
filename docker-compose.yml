@@ -18,5 +18,5 @@ services:
     # command: ["mount-s3", "--help"]  # Mount command
     # command: ["mount-s3", "${AWS_BUCKET}", "${LOCAL_PATH}"]  # Mount command
     command: >
-      echo ${AWS_BUCKET} && mount-s3 ${AWS_BUCKET} /mountpoint --allow-other
+      mount-s3 ${AWS_BUCKET} /mountpoint/bucket --allow-other
     restart: unless-stopped
